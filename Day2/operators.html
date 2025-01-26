@@ -1,0 +1,56 @@
+ <!-- Write a JavaScript script that compares two variables using different comparison operators (==, ===, !=, !==, >, <, >=, <=) and prints the results.
+ -->
+<!-- <Write a JavaScript script that uses the ternary operator to determine if a number is even or odd. -->
+
+ <!-- Expand the script to include a ternary operation that checks if a user is an adult (18+) or a minor.
+
+ Grade Classification: Declare a variable score and set it to a value between 0 and 100.
+  Use nested ternary operators to classify the score into grades: A (>= 90), B (>= 75), C (>= 60), D (>= 45), and F (below 45). Log the grade. -->
+
+  <!-- Temperature Check: Declare a variable temperature and 
+  use nested ternary operators to categorize it as "Hot" (above 30), "Warm" (20-30), "Cool" (10-19), and "Cold" (below 10). Log the result.
+ 
+  Age Group: Declare a variable age and 
+  use the ternary operator to classify the age into "Child" (0-12), "Teen" (13-19), "Adult" (20-64), and "Senior" (65 and above). Log the result. -->
+
+
+<script>
+
+
+var a=10;
+var s=5;
+//comparison operator (==)
+console.log(`${a} == ${s} -->`,a == s)
+console.log(`${a} === ${s} -->`,a === s)
+console.log(`${a} != ${s} -->`,a != s)
+console.log(`${a} !== ${s} -->`,a !== s)
+console.log(`${a} > ${s} -->`,a > s)
+console.log(`${a} < ${s} -->`,a < s)
+console.log(`${a} >= ${s} -->`,a >= s)
+console.log(`${a} <= ${s} -->`,a <= s)
+
+
+//terinary operator to check even and odd
+var a=10;
+(a % 2 == 0)?console.log(`${a} is even`):console.log(`${a} is odd`);
+
+
+// using terinary operator to check adult or minor
+ var age=20;
+ (age >= 18)?console.log(`${age}y  is comes under Adult`):console.log(`${age}y is comes under Minor`);
+
+
+ // grade classification using nested terinary operator
+  var score=90;
+  (score >= 90)?console.log('you got Grade A'):(score >= 75)?console.log('you got Grade B'):(score >= 60)?console.log('you got Grade C'):(score >=45)?console.log('you got Garade D'):console.log('you got Grade F');
+
+
+//checking temperature using nested terinary operator
+ var temperature=20;
+ (temperature > 30)?console.log('Hot'):(temperature >20 )?console.log('Warm'):(temperature >10 )?console.log('Cool'):console.log('Cold');
+
+ //Age group categorization  using nested terinary operator
+ var age=65;
+ (age <= 12)?console.log(`${age}y is child`):(age <= 19)?console.log(`${age}y is Teen`):(age <= 64 )?console.log(`${age}y is Adult`):console.log(`${age}y is Senior`);
+
+ </script>
