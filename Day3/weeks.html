@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="con">
+        <input type="text" placeholder="Enter a day(Eg: Monday)" id="prompt">
+        <button onclick="validate()">Submit</button>
+        <div class="preview">
+            <p id="para1"></p>
+            <p id="para2" style="margin-left: 30px; font-size: 20px;"></p>
+
+        </div>
+    </div>
+
+
+    <!-- Task 1: Day of the Week Message
+    Scenario: Develop a webpage that displays a special message based on the current day of the week.
+    
+    “Start your week strong!” for Monday.
+    “Keep going!” for Tuesday.
+    “Halfway there!” for Wednesday.
+    “Almost the weekend!” for Thursday.
+    “Happy Friday!” for Friday.
+    “Enjoy your weekend!” for Saturday and Sunday.
+    
+    Task:
+    Get the current day of the week.
+    Display the corresponding message. -->
+    
+
+
+    <script>
+        function validate(){
+            const value=document.getElementById('prompt').value.toLowerCase();
+
+            switch (value){
+                case 'monday':
+                    document.getElementById('para1').innerText='"Start your week strong!” for Monday.';
+                    document.getElementById('para2').innerText='💪😊';
+                case 'tuesday':
+                    document.getElementById('para1').innerText='“Keep going!” for Tuesday.';
+                    document.getElementById('para2').innerText='🚀👍';
+
+                case 'wednesday':
+                document.getElementById('para1').innerText='“Halfway there!” for Wednesday.';
+                document.getElementById('para2').innerText='🐫🎉';
+                case 'thursday':
+                document.getElementById('para1').innerText='  “Almost the weekend!” for Thursday.';
+                document.getElementById('para2').innerText='🎉🥳🌟';
+                case 'friday':
+                document.getElementById('para1').innerText='“Happy Friday!” for Friday.';
+                document.getElementById('para2').innerText='🎉😃🥂';
+                case 'saturday':
+                document.getElementById('para1').innerText='“Enjoy your weekend!” for Saturday and Sunday.';
+                document.getElementById('para2').innerText='🌞🍹🎉';
+                case 'sunday':
+                document.getElementById('para1').innerText='“Enjoy your weekend!” for Saturday and Sunday.';
+                document.getElementById('para2').innerText='😊';
+                default:
+                document.getElementById('para2').innerText='😡😡🤬👊';
+                
+            }
+        }
+
+    </script>
+</body>
+</html>

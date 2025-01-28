@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Calculator</title>
+    <style>
+   
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #84fab0, #8fd3f4);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    color: #333;
+    
+}
+
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px ;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.container div {
+    margin: 20px 0;
+}
+span{
+            text-align: center;
+            text-transform:uppercase;
+            -webkit-box-reflect: below -1px linear-gradient(transparent, rgba(128, 128, 128, 0.53));
+           
+            display: inline-block;
+            font-size:25px;
+            
+            color: #84fab0;
+          
+        }
+/* Input Styling */
+input[type="text"], input[type="number"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #84fab0;
+}
+
+/* Button Styling */
+button {
+    background: linear-gradient(120deg, #84fab0, #8fd3f4);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    color: #555;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px #84fab0, 0 0 10px #84fab0;
+    }
+    50% {
+        text-shadow: 0 0 15px #3bd8e3, 0 0 20px #37d6e7;
+    }
+}
+
+/* Special Effects */
+#para, #para2, #para3, #para41, #para42, #tab {
+    animation: textGlow 2s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    input[type="text"], input[type="number"] {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <span>Problem Solving</span>
+    <!-- Even Numbers -->
+    <div class="con">
+        <input id="value" type='text' placeholder="Range of Even Numbers" required>
+        <button onclick="validate()">Even</button>
+        <p id="para" style="letter-spacing: 0px;"></p>
+    </div>
+
+  
+
+    <!-- Factorial -->
+<div class="fact">
+    <input type="number" id="value2" placeholder="Require Factorial Number">
+    <button onclick="factorial()">Factorial</button>
+    <p id="para2"></p>
+</div>
+
+  <!-- multiples -->
+  <div class="con1">
+    <input id="value3" type='text' placeholder="Multiples of Number" required>
+    <button onclick="validate3()">Multiples</button>
+    <p id="para3" style="letter-spacing: 0px;"></p>
+</div>
+
+<!-- Alphabets -->
+<div class="alpha" style="margin: 40px;">
+    <button onclick="calpha()">Capital Alphabets</button>
+    <p id="para41" style="letter-spacing: 5px;border:1px solid #121212;"></p>
+    <button onclick="salpha()">Small Alphabets</button>
+    <p id="para42" style="letter-spacing: 5px;border:1px solid #151515;"></p>
+
+<!-- Tables -->
+</div>
+<div class="table">
+    <input type="number" id="input" placeholder="Require Tables">
+    <button onclick="tables()">Click</button>
+    <p id="tab"></p>
+</div>
+</div>
+
+    <script>
+        // Even Numbers
+        function validate(){
+            const value = document.getElementById('value').value;
+        var para = document.getElementById('para');
+        para.innerText=" ";
+    for (let i=1; i<=Number(value); i++){
+        if (i % 2 == 0){
+            para.innerText+=i+'\n';
+    }
+    }
+}
+
+        // Factorial
+        function factorial() {
+            const user = parseInt(document.getElementById('value2').value);
+            let para = document.getElementById('para2');
+            para.innerText = ""; // Clear earlier output
+            let result = 1;
+            if (isNaN(user) || user < 0) {
+                para.innerText = 'Enter a valid Input';
+            } else if (user === 0) {
+                para.innerText = "1";
+            } else {
+                for (let i = 1; i <= user; i++) {
+                    result *= i;
+                    para.innerText += i;
+                    if (i < user) {
+                        para.innerText += ' * ';
+                    }
+                }
+                para.innerText += " = " + result;
+            }
+        }
+
+        // Multiples
+        function validate3(){
+        const value3 = parseInt(document.getElementById('value3').value);
+        var para31 = document.getElementById('para3');
+        para31.innerText=" ";
+    for (let i=1; i<=10; i++){
+         para31.innerText+=value3*i+'\n';
+        }
+    }
+ 
+        // Alphabets
+        function calpha(){
+            let value41=document.getElementById('para41');
+            value41.innerText='';
+            for (let i=65; i<91; i++){
+                value41.innerText+=(String.fromCharCode(i));
+            }
+        }
+        function salpha(){
+            let value42=document.getElementById('para42');
+            value42.innerText='';
+            for (let i=97; i<123; i++){
+                value42.innerText+=(String.fromCharCode(i));
+            }
+        }
+    
+        //Tables
+        function tables(){
+            let inp=parseInt(document.getElementById('input').value);
+            let value5=document.getElementById('tab');
+            value5.innerText='';
+            for (let i=1; i<=inp; i++){
+                for (let j=1; j<=10; j++){
+                    value5.innerText+=i+'*'+j+'='+i*j+'\n'; 
+                }
+                value5.innerText+='\n'
+            }
+        }
+    </script>
+
+</body>
+</html>
