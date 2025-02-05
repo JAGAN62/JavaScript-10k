@@ -3,10 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discount and weeks</title>
+    <title>Interactive Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            width: 320px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            animation: slideInLeft 1s ease-in-out;
+        }
+        .con {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            width: 320px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            animation: slideInRight 1s ease-in-out;
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100vw);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100vw);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        .container:hover, .con:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        input {
+            padding: 12px;
+            border: 2px solid #ff6b81;
+            border-radius: 6px;
+            width: calc(100% - 24px);
+            margin-bottom: 12px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-size: 16px;
+        }
+        input:focus {
+            border-color: #ff4757;
+            box-shadow: 0 0 8px rgba(255, 71, 87, 0.5);
+            outline: none;
+        }
+        button {
+            padding: 12px 20px;
+            border: none;
+            background: #ff4757;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background: #18e88e;
+            transform: scale(1.05);
+        }
+        .pre, .preview {
+            margin-top: 15px;
+        }
+        p {
+            font-size: 18px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s forwards ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 600px) {
+            .container, .con {
+                width: 90%;
+                padding: 15px;
+            }
+            input, button {
+                width: 80%;
+                margin-top: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <button type="button"  onclick="window.open('discount.html')">Day1</button><br>
-    <button type="button"  onclick="window.open('weeks.html')">Day2</button><br>
+
+    <div class="container">
+        <input type="number" placeholder="Enter an Amount" id="amount">
+        <button onclick="calc()">Check Discount</button>
+        <div class="pre">
+            <p id="p2"></p>
+        </div>
+    </div>
+  
+    <div class="con">
+        <input type="text" placeholder="Enter a day (Eg: Monday)" id="day">
+        <button onclick="validate()">Submit</button>
+        <div class="preview">
+            <p id="para1"></p>
+            <p id="para2"></p>
+        </div>
+    </div>
+
+    <script>
+        function calc(){
+            const value = parseFloat(document.getElementById('amount').value);
+            if (isNaN(value) || value < 0) {
+                document.getElementById('p2').innerText = "Please enter a valid amount";
+                return;
+            }
+            document.getElementById('p2').innerText = 
+                (value < 50) ? "No discount" : 
+                (value <= 100) ? "5% discount" : 
+                (value <= 200) ? "10% discount" : 
+                "15% discount";
+        }
+
+        function validate(){
+            const value = document.getElementById('day').value.toLowerCase().trim();
+            const para1 = document.getElementById('para1');
+            const para2 = document.getElementById('para2');
+            
+            switch (value){
+                case 'monday':
+                    para1.innerText = '“Start your week strong!”';
+                    para2.innerText = '💪😊';
+                    break;
+                case 'tuesday':
+                    para1.innerText = '“Keep going!”';
+                    para2.innerText = '🚀👍';
+                    break;
+                case 'wednesday':
+                    para1.innerText = '“Halfway there!”';
+                    para2.innerText = '🐫🎉';
+                    break;
+                case 'thursday':
+                    para1.innerText = '“Almost the weekend!”';
+                    para2.innerText = '🎉🥳🌟';
+                    break;
+                case 'friday':
+                    para1.innerText = '“Happy Friday!”';
+                    para2.innerText = '🎉😃🥂';
+                    break;
+                case 'saturday':
+                case 'sunday':
+                    para1.innerText = '“Enjoy your weekend!”';
+                    para2.innerText = '🌞🍹🎉';
+                    break;
+                default:
+                    para1.innerText = 'Invalid input!';
+                    para2.innerText = '😡🤬👊';
+            }
+            para1.style.animation = "fadeIn 0.6s forwards";
+            para2.style.animation = "fadeIn 0.6s forwards";
+        }
+    </script>
 </body>
 </html>

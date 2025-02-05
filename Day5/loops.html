@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops Problems</title>
+</head>
+<body>
+    <!-- reverse a string input: hello output : olleh
+        find a even numbers  and odd nunmbers 
+        in an array - [23,54,67,64,46,95,98] and also 
+        find evensum greater or oddsum greate -->
+
+    <input type="text" placeholder="Enter a string" id="user1">
+    <button onclick="f1()">Reverse</button>
+    <b id="ans1"></b>
+
+    <input type="text" placeholder="Enter an array" id="user2" value="1, 2, 3" onblur="restoreDefault()" onfocus="clearDefault()" >
+    <button onclick="f2()">Calculate</button>
+    <b id="even"></b>
+    <b id="odd"></b>
+    <b id="evensum"></b>
+    <b id="oddsum"></b>
+    <b id="ans2"></b>
+
+    <script>
+           
+           
+            
+            
+
+           function f1(){
+            var input1=document.getElementById('user1').value;
+           var output1=document.getElementById('ans1');
+           var result='';
+
+                if (input1 == ''){
+                    result+="Type any string";
+                }
+                else{
+                    for(i=input1.length-1;i>=0;i--){
+                        result+=input1[i];
+                    }
+                }
+               output1.innerText=result;
+           }
+           function resfun(){
+            
+            if(arr.value.trim() === ''){
+                arr.value = val;
+            }
+            
+           }
+
+
+        const defaultValue = "1, 2, 3";
+       const inputField = document.getElementById("user2");
+    
+      function clearDefault() {
+        if (inputField.value === defaultValue) {
+          inputField.value = ""; // Clear when focused if it contains default value
+        }
+      }
+
+      function restoreDefault() {
+        if (inputField.value.trim() === "") {
+          inputField.value = defaultValue; // Restore default when cleared
+        }
+      }
+
+      function f2() {
+        var out1=document.getElementById('even');
+            var out2=document.getElementById('odd');
+            var out3=document.getElementById('evensum');
+            var out4=document.getElementById('oddsum');
+            var out5=document.getElementById('ans2');
+            var evenres='';
+            var oddres='';
+            var evensum=0;
+            var oddsum=0;
+        let numbers;
+        if (inputField.value === defaultValue || inputField.value.trim() === "") {
+          numbers = [1, 2, 3]; // Default values if nothing entered
+        } else {
+          numbers = inputField.value.split(',').map(num => parseInt(num.trim()));
+        }
+
+        const evenSum = numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
+        const oddSum = numbers.filter(num => num % 2 !== 0).reduce((sum, num) => sum + num, 0);
+
+        const resultDiv = document.getElementById('result');
+        if (evenSum > oddSum) {
+          resultDiv.textContent = 'Sum of even is great';
+        } else if (oddSum > evenSum) {
+          resultDiv.textContent = 'Sum of odd is great';
+        } else {
+          resultDiv.textContent = 'Even and odd sums are equal';
+        }
+      }
+
+        //    function f2
+            
+        //     const val='23';
+        //     const arr=document.getElementById('user2').value;
+           
+        //       for(i=0;i<=arr.length-1;i++){
+        //           if(arr[i]%2==0){
+        //                evenres+=arr[i];
+        //                evensum+=arr[i];
+        //           }
+        //           else{
+        //                oddres+=arr[i];
+        //                oddsum+=arr[i];
+
+        //           }
+        //       }
+        //       out1.innerText=evenres;
+        //       out2.innerText=oddres;
+        //       out3.innerText=evensum;
+        //       out4.innerText=oddsum;
+
+        //       if (evensum > oddsum){
+        //            out5.innerText='EvenSum is Greater than OddSum!';
+        //       }
+        //       else{
+        //            out5.innerText='OddSum is Greater than EvenSum!';
+        //       }
+        //    }
+
+    </script>
+</body>
+</html>

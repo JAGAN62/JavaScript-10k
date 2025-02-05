@@ -1,0 +1,57 @@
+<script>
+    let val=10;
+   
+   
+    for (j=2;j<=val;j++){
+    let lstep=0;
+   let fstep=0;
+   val1=0;
+   val2=0;
+      let  l=val;
+        for (i=l; i>=2;i--){
+            if (i %2==0 || i % 3==0){
+                lstep+=1;
+                
+                
+            }
+            else{
+               
+                console.log(i);
+                
+                break;
+            }
+            
+        }
+       
+       
+        for (k=l; k<=(2*l);k++){
+            if (k %2==0 || k % 3==0){
+                fstep+=1;
+                
+                
+            }
+            else{
+               
+                console.log(k);
+               
+                break;
+            }
+            
+        }
+       
+        if(lstep > fstep){
+            console.log(k,'is nearest');
+        }
+        else if(lstep < fstep){
+            console.log(i,'is nearest');
+
+        }
+        else{
+            console.log(i,k,'both are nearest');
+        }
+        
+        break;
+       
+    }
+    
+</script>
