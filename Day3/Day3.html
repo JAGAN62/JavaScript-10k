@@ -108,19 +108,34 @@
             }
         }
         @media (max-width: 600px) {
-            .container, .con {
-                width: 90%;
-                padding: 15px;
-            }
-            input {
-                width: 80%;
-                margin-top: 8px;
-            }
-            button {
+    .container, .con {
+        width: 90vw; /* Make it take 90% of the viewport width */
+        max-width: 450px; /* Set a reasonable max width */
+        padding: 20px;
+    }
+    input{
+        width: 90%;
+        font-size: 18px;
+        padding: 14px;
+    }
+    button {
                 width: 60%;
                 margin-top: 8px;
             }
-        }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        padding: 20px; /* Add some spacing around */
+        box-sizing: border-box; /* Ensure padding doesn't affect width */
+    }
+}
+
+    
+
+
     </style>
 </head>
 <body>
