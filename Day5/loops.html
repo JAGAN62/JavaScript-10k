@@ -4,128 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loops Problems</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffcc00, #ff6600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Input Fields */
+        input {
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ffcc00;
+            border-radius: 8px;
+            margin: 10px;
+            transition: all 0.3s ease-in-out;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+            width: 250px;
+        }
+
+        input:focus {
+            transform: scale(1.05);
+            border-color: #ff6600;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.8);
+        }
+
+        /* Buttons */
+        button {
+            background: linear-gradient(135deg, #ff9800, #ff6600);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #ff6600, #ff9800);
+            transform: scale(1.1);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Styling the results */
+        #ans1, #result-container {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            color: #ffcc00;
+            display: inline-block;
+            min-width: 220px;
+        }
+
+        #result-container {
+            display: none;
+            width: 90%;
+            max-width: 400px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        #ans1.show, #result-container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        input::placeholder{
+          color:white;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            input, button {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- reverse a string input: hello output : olleh
-        find a even numbers  and odd nunmbers 
-        in an array - [23,54,67,64,46,95,98] and also 
-        find evensum greater or oddsum greate -->
+
+    <h1>Loops Problems</h1>
 
     <input type="text" placeholder="Enter a string" id="user1">
     <button onclick="f1()">Reverse</button>
     <b id="ans1"></b>
 
-    <input type="text" placeholder="Enter an array" id="user2" value="1, 2, 3" onblur="restoreDefault()" onfocus="clearDefault()" >
+    <br><br>
+    
+    <input type="text" placeholder="Enter an array" id="user2" value="1, 2, 3" onblur="restoreDefault()" onfocus="clearDefault()">
     <button onclick="f2()">Calculate</button>
-    <b id="even"></b>
-    <b id="odd"></b>
-    <b id="evensum"></b>
-    <b id="oddsum"></b>
-    <b id="ans2"></b>
+
+    <div id="result-container">
+        <p><b style="color:rgb(11, 233, 226)">Even Numbers:</b> <span id="even"></span></p>
+        <p><b style="color:rgb(11, 233, 226)">Odd Numbers:</b> <span id="odd"></span></p>
+        <p><b style="color:rgb(11, 233, 226)">Even Sum:</b> <span id="evensum"></span></p>
+        <p><b style="color:rgb(11, 233, 226)">Odd Sum:</b> <span id="oddsum"></span></p>
+        <p><b style="color:rgb(11, 233, 226)">Result:</b> <span id="ans2"></span></p>
+    </div>
 
     <script>
-           
-           
-            
-            
+        function f1() {
+            var input1 = document.getElementById('user1').value;
+            var output1 = document.getElementById('ans1');
+            var result = '';
 
-           function f1(){
-            var input1=document.getElementById('user1').value;
-           var output1=document.getElementById('ans1');
-           var result='';
-
-                if (input1 == ''){
-                    result+="Type any string";
+            if (input1 == '') {
+                result = "Type any string 😊";
+            } else {
+                for (let i = input1.length - 1; i >= 0; i--) {
+                    result += input1[i];
                 }
-                else{
-                    for(i=input1.length-1;i>=0;i--){
-                        result+=input1[i];
-                    }
-                }
-               output1.innerText=result;
-           }
-           function resfun(){
-            
-            if(arr.value.trim() === ''){
-                arr.value = val;
             }
-            
-           }
 
+            output1.innerText = result;
+            output1.classList.add("show"); // Show with animation
+        }
 
         const defaultValue = "1, 2, 3";
-       const inputField = document.getElementById("user2");
-    
-      function clearDefault() {
-        if (inputField.value === defaultValue) {
-          inputField.value = ""; // Clear when focused if it contains default value
-        }
-      }
+        const inputField = document.getElementById("user2");
 
-      function restoreDefault() {
-        if (inputField.value.trim() === "") {
-          inputField.value = defaultValue; // Restore default when cleared
-        }
-      }
-
-      function f2() {
-        var out1=document.getElementById('even');
-            var out2=document.getElementById('odd');
-            var out3=document.getElementById('evensum');
-            var out4=document.getElementById('oddsum');
-            var out5=document.getElementById('ans2');
-            var evenres='';
-            var oddres='';
-            var evensum=0;
-            var oddsum=0;
-        let numbers;
-        if (inputField.value === defaultValue || inputField.value.trim() === "") {
-          numbers = [1, 2, 3]; // Default values if nothing entered
-        } else {
-          numbers = inputField.value.split(',').map(num => parseInt(num.trim()));
+        function clearDefault() {
+            if (inputField.value === defaultValue) {
+                inputField.value = ""; 
+            }
         }
 
-        const evenSum = numbers.filter(num => num % 2 === 0).reduce((sum, num) => sum + num, 0);
-        const oddSum = numbers.filter(num => num % 2 !== 0).reduce((sum, num) => sum + num, 0);
-
-        const resultDiv = document.getElementById('result');
-        if (evenSum > oddSum) {
-          resultDiv.textContent = 'Sum of even is great';
-        } else if (oddSum > evenSum) {
-          resultDiv.textContent = 'Sum of odd is great';
-        } else {
-          resultDiv.textContent = 'Even and odd sums are equal';
+        function restoreDefault() {
+            if (inputField.value.trim() === "") {
+                inputField.value = defaultValue;
+            }
         }
-      }
 
-        //    function f2
-            
-        //     const val='23';
-        //     const arr=document.getElementById('user2').value;
-           
-        //       for(i=0;i<=arr.length-1;i++){
-        //           if(arr[i]%2==0){
-        //                evenres+=arr[i];
-        //                evensum+=arr[i];
-        //           }
-        //           else{
-        //                oddres+=arr[i];
-        //                oddsum+=arr[i];
+        function f2() {
+    var resultContainer = document.getElementById('result-container');
+    var out1 = document.getElementById('even');
+    var out2 = document.getElementById('odd');
+    var out3 = document.getElementById('evensum');
+    var out4 = document.getElementById('oddsum');
+    var out5 = document.getElementById('ans2');
 
-        //           }
-        //       }
-        //       out1.innerText=evenres;
-        //       out2.innerText=oddres;
-        //       out3.innerText=evensum;
-        //       out4.innerText=oddsum;
+    let numbers = inputField.value.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
 
-        //       if (evensum > oddsum){
-        //            out5.innerText='EvenSum is Greater than OddSum!';
-        //       }
-        //       else{
-        //            out5.innerText='OddSum is Greater than EvenSum!';
-        //       }
-        //    }
+    let evenNums = numbers.filter(num => num % 2 === 0);
+    let oddNums = numbers.filter(num => num % 2 !== 0);
+    let evenSum = evenNums.reduce((sum, num) => sum + num, 0);
+    let oddSum = oddNums.reduce((sum, num) => sum + num, 0);
+
+    out1.innerHTML = evenNums.join(', ') || "None";
+    out2.innerHTML = oddNums.join(', ') || "None";
+    out3.innerHTML = evenSum;
+    out4.innerHTML = oddSum;
+
+    // Corrected logic to show the right result
+    if (evenSum > oddSum) {
+        out5.textContent = 'Sum of even is greater';
+    } else if (oddSum > evenSum) {
+        out5.textContent = 'Sum of odd is greater';
+    } else {
+        out5.textContent = 'Even and odd sums are equal';
+    }
+
+    resultContainer.classList.add("show");
+    resultContainer.style.display = "block";
+}
 
     </script>
 </body>
