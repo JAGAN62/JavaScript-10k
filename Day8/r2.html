@@ -15,24 +15,23 @@
 
         .cardprops {
             display: grid;
-            grid-template-columns: auto auto auto auto;
+            grid-template-columns: repeat(4, 1fr);
             justify-content: center;
             border: 1px solid rebeccapurple;
-            position: relative;
             gap: 8px;
             margin-top: 30px;
             overflow-x: hidden;
         }
 
         .imgsize {
-            width: 320px;
-            height: 200px;
+            width: 100%;
+            height: auto;
             margin: 2px;
         }
 
         .paratext {
             position: absolute;
-            margin-top: -207px;
+            margin-top: -295px;
             margin-left: 2px;
             background-color: rgb(0, 8, 3);
             padding: 8px;
@@ -41,21 +40,20 @@
 
         .con-nav {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
+            align-items: center;
             background-color: rgba(255, 255, 255, 1);
             width: 100vw;
             height: 50px;
             position: sticky;
             top: 0px;
-            column-gap: 1050px;
             z-index: 25;
+            padding: 0 20px;
         }
 
         .nav-menu {
             display: flex;
-            justify-content: space-between;
             column-gap: 15px;
-            margin-right: 15px;
         }
 
         .middletxt {
@@ -85,107 +83,126 @@
         .input_style {
             height: 30px;
         }
-        .maps{
-            margin:50px 30px 5px 30px;
-            width:96%;
-        }
-        .sends{
-            background-color:black;color:white;padding:10px;margin-left:30px;
-            margin-top:10px;font-size:16px;width:10vw;border:none;font-family:Arial;
-        }
-        .Projectss{
-            font-size:26px; 
-            margin-bottom: 10px;
-            margin-left:30px;
-        }
-        #foot{
-            background-color:black;text-align:center;color:white;height:7vh;padding-top:22px;
-        }
-        #authors_div{
-            display: flex; justify-content: space-between;
-        }
 
-        /* Media Queries for Mobile Devices (up to 767px) */
-        @media only screen and (max-width: 767px) {
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1024px) {
             .cardprops {
-                grid-template-columns: auto; /* 2 columns for mobile */
-                gap: 5px; /* Reduce gap */
+                grid-template-columns: repeat(3, 1fr);
             }
-
-            .imgsize {
-                width: 100%; /* Full width for images */
-                height: auto; /* Maintain aspect ratio */
-            }
-
-            .paratext{
-            position: absolute;
-             margin-top:-207px;
-             /* margin-left: 2px; */
-             background-color: rgb(0, 8, 3);
-             padding: 8px;
-             color: white;
-            
-             
-        }
 
             .con-nav {
-                column-gap: 20px; /* Reduce gap */
-                justify-content: space-between; /* Adjust spacing */
-                padding: 0 10px; /* Add padding */
+                padding: 0 10px;
             }
 
-            .nav-menu {
-                column-gap: 10px; /* Reduce gap */
+            /* .nav-menu {
+                column-gap: 10px;
+            } */
+
+            .ptxt1, .ptxt2 {
+                font-size: 28px;
+            }
+
+            .main_img {
+                width: 100%;
+                height: auto;
             }
 
             .middletxt {
-                top: 24%; /* Center text vertically */
-                left: 50%; /* Center text horizontally */
-                transform: translate(-50%, -50%); /* Center alignment */
+                top: 60%;
+                left: 40%;
+            }
+
+            .map {
+                width: 100%;
+                margin: 20px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cardprops {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .con-nav {
+                height: 30px;
+                padding: 10px;
+            }
+
+            .nav-menu {
+                align-items: center;
+                row-gap: 10px;
+                margin-top: 10px;
+            }
+
+            .middletxt {
+                top: 50%;
+                left: 30%;
             }
 
             .ptxt1, .ptxt2 {
-                font-size: 14px; /* Smaller font size */
+                font-size: 24px;
             }
 
             .authors_div {
-                flex-direction: column; /* Stack author cards vertically */
-                align-items: center; /* Center align */
+                flex-direction: column;
+                align-items: center;
             }
 
             .author_card {
-                margin: 10px 0; /* Adjust margin */
+                margin: 10px 0;
             }
 
-            .input_style {
-                width: 100%; /* Full width for inputs */
+            .input_div {
+                width: 90%;
+                margin: 20px auto;
             }
-            .sends {
-            width: 40%; /* Full width for button */
-            margin-left: 30px; /* Remove left margin */
-            font-size: 14px; /* Smaller font size */
-            padding: 8px; /* Adjust padding */
+
+            .send {
+                width: 50%;
+                margin: 20px auto;
+            }
+
+            .map {
+                width: 90%;
+                margin: 20px auto;
+            }
+
+            .main_img {
+                width: 100%;
+                height: auto;
+            }
         }
-        .maps {
-            width: 100%; /* Full width for map */
-            margin: 20px 0; /* Adjust margin */
-            height: auto; /* Maintain aspect ratio */
-        }
-        img[src='https://www.w3schools.com/w3images/architect.jpg']{
-            width:100%;
-            height:auto;
-        }
-        .Projectss{
-            font-size: 20px; /* Smaller font size */
-            margin-left:30px;
-        }
-        #foot{
-            height:5vh;
-            text-align:center;
-        }
-        #authors_div{
-            display:block;
-        }
+
+        @media (max-width: 480px) {
+            .cardprops {
+                grid-template-columns: 1fr;
+            }
+
+            .middletxt {
+                top: 40%;
+                left: 20%;
+            }
+
+            .ptxt1, .ptxt2 {
+                font-size: 20px;
+            }
+
+            .input_div {
+                width: 100%;
+            }
+
+            .send {
+                width: 80%;
+            }
+
+            .map {
+                width: 100%;
+            }
+
+            .main_img {
+                width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
@@ -195,7 +212,7 @@
         const imgtxt = ["Summer House", "Brick House", "Renovated", "Barn House", 'Summer House', 'Brick House', "Renovated", "Barn House"];
         let main = document.createElement('div');
         let container = document.createElement('div');
-        // container.style.border = "1px solid red";
+        container.style.border = "1px solid red";
         container.setAttribute('class', 'cardprops');
 
         // Header
@@ -212,8 +229,8 @@
         nav_child2_p2.innerHTML = 'Contacts';
 
         let Projects = document.createElement('p');
-        Projects.innerHTML = 'projects';
-        Projects.setAttribute('class','Projectss')
+        Projects.innerHTML = 'Projects';
+        Projects.style.cssText = 'font-size:26px; margin-bottom: 10px; margin-left:30px;';
 
         nav_child2.append(nav_child2_p1, nav_child2_p2, nav_child2_p3);
         nav.append(nav_child1, nav_child2);
@@ -223,6 +240,7 @@
         // Main
         let main_img = document.createElement('img');
         main_img.src = 'https://www.w3schools.com/w3images/architect.jpg';
+        main_img.style.cssText = 'width: 100%; height: auto;';
         let main_para_div = document.createElement('div');
         let main_para1 = document.createElement('span');
         let main_para2 = document.createElement('span');
@@ -236,14 +254,12 @@
         // Section 2
         let about = document.createElement('p');
         about.innerHTML = 'About';
-        about.setAttribute('class','Projectss')
-
-        
+        about.style.cssText = 'font-size:26px; margin-bottom: 0px; margin-left:30px;';
         let abouttxt = document.createElement('p');
         abouttxt.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
-        abouttxt.style.cssText = 'font-size:16px; margin-bottom: 0px;margin-left:30px;';
+        abouttxt.style.cssText = 'font-size:16px; margin-bottom: 0px; margin-left:30px;';
 
-        for (i = 0; i < img.length; i++) {
+        for (let i = 0; i < img.length; i++) {
             let photoCard = document.createElement('div');
             let img1 = document.createElement('img');
             let para = document.createElement('p');
@@ -261,7 +277,7 @@
         let author_desg = ['CEO & FOUNDER', 'Architect', 'Architect', 'Architect'];
         let author_imgs = ['../imgs/man1.jpg', '../imgs/man2.jpg', '../imgs/man3.jpg', '../imgs/man4.jpg'];
         let authors_div = document.createElement('div');
-        authors_div.setAttribute('id','authors_div')
+        authors_div.style.cssText = 'display: flex; justify-content: space-between;';
 
         for (let i = 0; i < author_imgs.length; i++) {
             let author_card = document.createElement('div');
@@ -292,12 +308,11 @@
         // Contact Section
         let contact_head = document.createElement('p');
         contact_head.innerHTML = 'Contact';
-        contact_head.setAttribute('class','Projectss')
-        
+        contact_head.style.cssText = 'font-size:26px; margin: 30px';
 
         let contact_txt = document.createElement('p');
-        contact_txt.innerHTML = 'Let get in touch and talk about your proejct';
-        contact_txt.style.cssText = 'font-size:18px;font-weight:550;margin-left:30px;';
+        contact_txt.innerHTML = 'Let get in touch and talk about your project';
+        contact_txt.style.cssText = 'font-size:18px; font-weight:550; margin-left:30px;';
 
         let input_div = document.createElement('div');
         let input1 = document.createElement('input');
@@ -317,11 +332,11 @@
         input4.setAttribute('class', 'input_style');
 
         input_div.append(input1, input2, input3, input4);
-        input_div.style.cssText = 'display:flex;flex-direction:column;row-gap:20px;margin:30px 30px ;';
+        input_div.style.cssText = 'display:flex; flex-direction:column; row-gap:20px; margin:30px 30px;';
 
         let send = document.createElement('button');
         send.innerText = "Send Message";
-        send.setAttribute('class','sends')
+        send.style.cssText = 'background-color:black; color:white; padding:10px; margin-left:30px; margin-top:10px; font-size:16px; width:10vw; border:none; font-family:Arial;';
         send.addEventListener('mouseenter', () => {
             send.style.backgroundColor = 'grey';
             send.style.Color = 'black';
@@ -333,12 +348,12 @@
         // Map
         let map = document.createElement('img');
         map.src = '../imgs/map.jpg';
-        map.setAttribute('class','maps')
+        map.style.cssText = 'width: 100%; height: auto; margin: 20px 0;';
 
         // Footer
         let foot = document.createElement("div");
         foot.innerHTML = 'Powered by <u>w3.css</u>';
-        foot.setAttribute('id','foot');
+        foot.style.cssText = 'background-color:black; text-align:center; color:white; height:8vh; padding-top:22px;';
 
         main.append(nav, main_img, main_para_div, Projects, container, about, abouttxt, authors_div, contact_head, contact_txt, input_div, send, map, foot);
         document.body.append(main);
