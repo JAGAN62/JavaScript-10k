@@ -85,11 +85,24 @@
         .input_style {
             height: 30px;
         }
+        .maps{
+            margin:50px 30px 5px 30px;
+            width:96%;
+        }
+        .sends{
+            background-color:black;color:white;padding:10px;margin-left:30px;
+            margin-top:10px;font-size:16px;width:10vw;border:none;font-family:Arial;
+        }
+        .Projectss{
+            font-size:26px; 
+            margin-bottom: 10px;
+            margin-left:30px;
+        }
 
         /* Media Queries for Mobile Devices (up to 767px) */
         @media only screen and (max-width: 767px) {
             .cardprops {
-                grid-template-columns: auto auto; /* 2 columns for mobile */
+                grid-template-columns: auto; /* 2 columns for mobile */
                 gap: 5px; /* Reduce gap */
             }
 
@@ -114,13 +127,13 @@
             }
 
             .middletxt {
-                top: 50%; /* Center text vertically */
+                top: 24%; /* Center text vertically */
                 left: 50%; /* Center text horizontally */
                 transform: translate(-50%, -50%); /* Center alignment */
             }
 
             .ptxt1, .ptxt2 {
-                font-size: 24px; /* Smaller font size */
+                font-size: 14px; /* Smaller font size */
             }
 
             .authors_div {
@@ -135,16 +148,25 @@
             .input_style {
                 width: 100%; /* Full width for inputs */
             }
-
-            .send {
-                width: 100%; /* Full width for button */
-                margin-left: 0; /* Remove left margin */
-            }
-
-            .map {
-                width: 100%; /* Full width for map */
-                margin: 20px 0; /* Adjust margin */
-            }
+            .sends {
+            width: 40%; /* Full width for button */
+            margin-left: 30px; /* Remove left margin */
+            font-size: 14px; /* Smaller font size */
+            padding: 8px; /* Adjust padding */
+        }
+        .maps {
+            width: 100%; /* Full width for map */
+            margin: 20px 0; /* Adjust margin */
+            height: auto; /* Maintain aspect ratio */
+        }
+        img[src='https://www.w3schools.com/w3images/architect.jpg']{
+            width:100%;
+            height:auto;
+        }
+        .Projectss{
+            font-size: 20px; /* Smaller font size */
+            margin-left:30px;
+        }
         }
     </style>
 </head>
@@ -172,7 +194,7 @@
 
         let Projects = document.createElement('p');
         Projects.innerHTML = 'projects';
-        Projects.style.cssText = 'font-size:26px; margin-bottom: 10px;margin-left:30px;';
+        Projects.setAttribute('class','Projectss')
 
         nav_child2.append(nav_child2_p1, nav_child2_p2, nav_child2_p3);
         nav.append(nav_child1, nav_child2);
@@ -195,7 +217,9 @@
         // Section 2
         let about = document.createElement('p');
         about.innerHTML = 'About';
-        about.style.cssText = 'font-size:26px; margin-bottom: 0px;margin-left:30px;';
+        about.setAttribute('class','Projectss')
+
+        
         let abouttxt = document.createElement('p');
         abouttxt.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
         abouttxt.style.cssText = 'font-size:16px; margin-bottom: 0px;margin-left:30px;';
@@ -249,7 +273,8 @@
         // Contact Section
         let contact_head = document.createElement('p');
         contact_head.innerHTML = 'Contact';
-        contact_head.style.cssText = 'font-size:26px; margin: 30px';
+        contact_head.setAttribute('class','Projectss')
+        
 
         let contact_txt = document.createElement('p');
         contact_txt.innerHTML = 'Let get in touch and talk about your proejct';
@@ -277,7 +302,7 @@
 
         let send = document.createElement('button');
         send.innerText = "Send Message";
-        send.style.cssText = 'background-color:black;color:white;padding:10px;margin-left:30px;margin-top:10px;font-size:16px;width:10vw;border:none;font-family:Arial;';
+        send.setAttribute('class','sends')
         send.addEventListener('mouseenter', () => {
             send.style.backgroundColor = 'grey';
             send.style.Color = 'black';
@@ -289,7 +314,7 @@
         // Map
         let map = document.createElement('img');
         map.src = '../imgs/map.jpg';
-        map.style.cssText = 'margin:50px 30px 5px 30px;width:1320px;';
+        map.setAttribute('class','maps')
 
         // Footer
         let foot = document.createElement("div");
