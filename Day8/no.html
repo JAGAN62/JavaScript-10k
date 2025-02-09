@@ -118,7 +118,8 @@
             }
 
             .paratext {
-                margin-top: 8px; /* Adjust text position */
+                position: absolute;
+                margin-top: -295px; /* Adjust text position */
                 font-size: 14px; /* Smaller font size */
             }
 
@@ -189,7 +190,6 @@
         const imgtxt = ["Summer House", "Brick House", "Renovated", "Barn House", 'Summer House', 'Brick House', "Renovated", "Barn House"];
         let main = document.createElement('div');
         let container = document.createElement('div');
-        container.style.border = "1px solid red";
         container.setAttribute('class', 'cardprops');
 
         // Header
