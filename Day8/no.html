@@ -98,6 +98,12 @@
             margin-bottom: 10px;
             margin-left:30px;
         }
+        #foot{
+            background-color:black;text-align:center;color:white;height:7vh;padding-top:22px;
+        }
+        #authors_div{
+            display: flex; justify-content: space-between;
+        }
 
         /* Media Queries for Mobile Devices (up to 767px) */
         @media only screen and (max-width: 767px) {
@@ -112,7 +118,7 @@
             }
 
             .paratext {
-                margin-top: -150px; /* Adjust text position */
+                margin-top: 8px; /* Adjust text position */
                 font-size: 14px; /* Smaller font size */
             }
 
@@ -166,6 +172,13 @@
         .Projectss{
             font-size: 20px; /* Smaller font size */
             margin-left:30px;
+        }
+        #foot{
+            height:5vh;
+            text-align:center;
+        }
+        #authors_div{
+            display:block;
         }
         }
     </style>
@@ -242,7 +255,7 @@
         let author_desg = ['CEO & FOUNDER', 'Architect', 'Architect', 'Architect'];
         let author_imgs = ['../imgs/man1.jpg', '../imgs/man2.jpg', '../imgs/man3.jpg', '../imgs/man4.jpg'];
         let authors_div = document.createElement('div');
-        authors_div.style.cssText = 'display: flex; justify-content: space-between;';
+        authors_div.setAttribute('id','authors_div')
 
         for (let i = 0; i < author_imgs.length; i++) {
             let author_card = document.createElement('div');
@@ -319,7 +332,7 @@
         // Footer
         let foot = document.createElement("div");
         foot.innerHTML = 'Powered by <u>w3.css</u>';
-        foot.style.cssText = 'background-color:black;text-align:center;color:white;height:8vh;padding-top:22px;';
+        foot.setAttribute('id','foot');
 
         main.append(nav, main_img, main_para_div, Projects, container, about, abouttxt, authors_div, contact_head, contact_txt, input_div, send, map, foot);
         document.body.append(main);
