@@ -178,13 +178,15 @@
                     vs.innerHTML += i;
                     hasVowel = true;
                 } 
-                else{
-                    vs.innerHTML += "null";
-                    return;
+                
+                   
 
-                }  
+                
             }
             output3.innerText = hasVowel ? 'yes' : 'No';
+            if (hasVowel == false){
+                vs.innerHTML+='null';
+            }
         }
 
         function tempconvert(){
