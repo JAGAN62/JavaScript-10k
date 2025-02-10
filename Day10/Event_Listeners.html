@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced UI</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .cl1 {
+            display: none;
+        }
+        button {
+            margin: 8px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background: linear-gradient(45deg, #f06595, #ff6b6b);
+            transform: scale(1.1);
+        }
+        img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        img:hover {
+            transform: scale(1.08);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        div {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+        div:hover {
+            transform: scale(1.05);
+        }
+        p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        p:hover {
+            color: #ff6b6b;
+        }
+        @media (max-width: 600px) {
+            button {
+                width: 90%;
+            }
+            img {
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+<script>
+    let tsk1=document.createElement('div');
+    let con=document.createElement('div');
+    let btn1=document.createElement('button');
+    btn1.innerHTML='HTML';
+    let btn2=document.createElement('button');
+    btn2.innerHTML='CSS';
+    let btn3=document.createElement('button');
+    btn3.innerHTML='JAVASCRIPT';
+    let btn4=document.createElement('button');
+    btn4.innerHTML='PYTHON';
+    let btn5=document.createElement('button');
+    btn5.innerHTML='JAVA';
+    let image=document.createElement('img');
+    btn1.addEventListener('click',() => {
+        image.src='../imgs/pic1.jpeg';
+        image.alt='html';
+    });
+    btn2.addEventListener('click',() => {
+        image.src='../imgs/pic2.jpeg';
+        image.alt='css';
+    });
+    btn3.addEventListener('click',() => {
+        image.src='../imgs/pic3.png';
+        image.alt='java script';
+    });
+    btn4.addEventListener('click',() => {
+        image.src='../imgs/pic9.jpeg';
+        image.alt='python';
+    });
+    btn5.addEventListener('click',() => {
+        image.src='../imgs/pic10.png';
+        image.alt='java';
+    });
+    con.append(image);
+    tsk1.append(con,btn1,btn2,btn3,btn4,btn5);
+    let tsk2=document.createElement('div');
+    let con2=document.createElement('div');
+    let para=document.createElement('p');
+    para.innerHTML='Hello Every one!';
+    let button1=document.createElement('button');
+    button1.innerHTML='Change Text';
+    con2.append(para)
+    button1.addEventListener('click',() => {
+        para.innerHTML='How are you all?';
+    })
+    tsk2.append(con2,button1)
+    let tsk3=document.createElement('div');
+    let con3=document.createElement('div');
+    let par=document.createElement('p');
+    par.innerHTML='Class add and Remove';
+    con3.append(par)
+    let b1=document.createElement('button');
+    b1.innerHTML='Add Class'
+    let b2=document.createElement('button');
+    b2.innerHTML='Remove Class'
+    b1.addEventListener('click',() => {
+        con3.classList.add('highlight');
+        par.classList.add('bold');
+        par.innerHTML='Class has been added';
+    })
+    b2.addEventListener('click',() => {
+        con3.classList.remove('highlight');
+        par.classList.remove('bold');
+        par.innerHTML='Class has been removed';
+    })
+    tsk3.append(con3,b1,b2);
+    let tsk4=document.createElement('div');
+    let con4=document.createElement('div');
+    let p=document.createElement('p');
+    p.innerHTML='Display / Hide';
+    con4.append(p)
+    let b=document.createElement('button');
+    b.innerHTML='Toggle'
+    b.addEventListener('click',() => {
+        con4.classList.toggle('cl1');
+    })
+    tsk4.append(con4,b)
+    document.body.append(tsk1,tsk2,tsk3,tsk4)
+</script>
+</body>
+</html>
