@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calculations</title>
+
+    <style>
+        /* General Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+        }
+
+        .con1, .con2, .con3, .con4 {
+            width: 40%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid teal;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .con1:hover, .con2:hover, .con3:hover, .con4:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            box-shadow: 0 0 10px teal;
+        }
+
+        button {
+            background: teal;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #1abc9c;
+            transform: scale(1.1);
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #f1c40f;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .con1, .con2, .con3, .con4 {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .con1, .con2, .con3, .con4 {
+                width: 90%;
+            }
+
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="con1">
+        <label>SQUARES</label><br>
+        <input type="text" id="input1" required placeholder="Enter a number">
+        <button onclick="square()">SUBMIT</button>
+        <p id="para1"></p>
+    </div>
+    
+    <div class="con2">
+        <label>AVERAGE</label><br>
+        <input type="text" id="input2" required placeholder="Enter numbers separated with ','">
+        <button onclick="average()">AVERAGE</button>
+        <p id="para2"></p>
+    </div>
+    
+    <div class="con3">
+        <label>Check Vowels</label><br>
+        <input type="text" id="input3" required placeholder="Enter a word">
+        <button onclick="vowels()">CHECK</button>
+        <p id="para3"></p>
+        <p id="vres"></p>
+    </div>
+
+    <div class="con4">
+        <label>TEMPERATURE CONVERSION</label><br>
+        <input type="text" id="temp" required placeholder="Enter temperature value">
+        <select id="tempscale" required>
+            <option value="" disabled selected>Select scale to convert</option>
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+        </select>
+        <button onclick="tempconvert()">CONVERT</button>
+        <p id="para4"></p>
+    </div>
+
+    <script>
+       function square(){
+           const val = parseInt(document.getElementById('input1').value);
+           document.getElementById('para1').innerHTML = `Square of ${val}: ${val**2}`;
+        }
+
+        function average() {
+            const inputValue = document.getElementById('input2').value;
+            let array = inputValue.split(",").map(item => item.trim()); 
+            let output = document.getElementById('para2');
+            let sum = 0;
+            
+            for (let i = 0; i < array.length; i++) {
+                sum += parseInt(array[i]); 
+            }
+
+            let a = (sum / array.length).toFixed(2);
+            output.innerText = `Average of ${inputValue}: ${a}`;
+        }
+
+        function vowels() {
+            const str = document.getElementById('input3').value.toLowerCase();
+            const output3 = document.getElementById('para3'); 
+            const vs = document.getElementById('vres'); 
+            vs.innerHTML = `Contain Vowels are/is: `;
+            let hasVowel = false;
+            
+            for (let i of str) {
+                if (i.match(/[aeiou]/g) != null) {
+                    vs.innerHTML += i;
+                    hasVowel = true;
+                } 
+                else{
+                    vs.innerHTML += "null";
+                    return;
+
+                }  
+            }
+            output3.innerText = hasVowel ? 'yes' : 'No';
+        }
+
+        function tempconvert(){
+            const val = document.getElementById('temp').value.trim();
+            const scale = document.getElementById('tempscale').value;
+            const output = document.getElementById('para4');
+
+            if (isNaN(val)) {
+                output.innerText = 'Enter a valid numeric temperature';
+                return;
+            }
+            if (scale === "") {
+                output.innerText = 'Choose a valid scale';
+                return;
+            }
+
+            const tempValue = parseFloat(val);
+            
+            if (scale === "C") {
+                output.innerText = ((tempValue * 9/5) + 32).toFixed(2) + ' Fahrenheit';
+            } else if (scale === "F") {
+                output.innerText = ((tempValue - 32) * 5/9).toFixed(2) + ' Celsius';
+            } else {
+                output.innerText = 'Invalid Scale Selected';
+            }
+        }
+    </script>
+    
+</body>
+</html>
