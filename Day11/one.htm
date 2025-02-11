@@ -6,100 +6,138 @@
     <title>Modern UI Webpage</title>
     <style>
         /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #121212, #1e1e1e);
-            color: white;
+            background: #1e1e2f; /* Dark background */
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
             max-width: 1200px;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: #2a2a40; /* Dark card background */
             border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            width: 300px;
-            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease-in-out;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #fff;
+            text-align: center;
+            font-weight: 600;
         }
 
         input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #444;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            outline: none;
-            transition: all 0.3s ease-in-out;
-        }
-
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            background: #333;
+            color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         input:focus {
-            background: rgba(255, 255, 255, 0.3);
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+            outline: none;
         }
 
         button {
-            background: #00c9ff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s ease-in-out;
             width: 100%;
-            margin-top: 10px;
+            padding: 12px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
 
         button:hover {
-            background: #008aff;
-        }
-
-        #message, #message1 {
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 14px;
+            background: #0056b3;
+            transform: scale(1.02);
         }
 
         .btn-group {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: 10px;
         }
 
         .btn-group button {
-            flex: 1;
-            margin: 5px;
+            background: #28a745;
+        }
+
+        .btn-group button:hover {
+            background: #218838;
+        }
+
+        #message, #message1, #display {
+            margin-top: 15px;
+            font-size: 1rem;
+            text-align: center;
+            transition: opacity 0.3s ease;
         }
 
         #display {
-            font-size: 20px;
+            font-size: 1.4rem;
             font-weight: bold;
-            color: #00c9ff;
-            margin-top: 10px;
-            transition: opacity 0.3s ease-in-out;
+            color: #fff;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: fadeIn 0.6s ease;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            input, button {
+                font-size: 0.9rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -157,28 +195,25 @@
 
     <script>
         // Password Strength Checker
-
-           var username = document.getElementById('user1');
-            var passInput = document.getElementById('pass1');
-            function check(event) {
+        var username = document.getElementById('user1');
+        var passInput = document.getElementById('pass1');
+        function check(event) {
             var passw = passInput.value;
-              event.preventDefault();
-             var ans = document.getElementById('message');
-     
-            if (passw == ""){
-                ans.innerHTML = "Please Enter Password!";
-                ans.style.color = "red";
+            event.preventDefault();
+            var ans = document.getElementById('message');
 
-            }
-            else if(passw.length <= 5) {
+            if (passw == "") {
+                ans.innerHTML = "Please Enter Password!";
+                ans.style.color = "#ff4d4d";
+            } else if (passw.length <= 5) {
                 ans.innerHTML = "Weak Password! ❌";
-                ans.style.color = "red";
+                ans.style.color = "#ff4d4d";
             } else if (passw.length >= 6 && passw.length <= 10) {
                 ans.innerHTML = "Medium Strength! ⚠️";
-                ans.style.color = "orange";
+                ans.style.color = "#ffcc00";
             } else {
                 ans.innerHTML = "Strong Password! ✅";
-                ans.style.color = "green";
+                ans.style.color = "#00cc66";
             }
 
             passInput.value = "";
@@ -194,10 +229,10 @@
 
             if (pass1 === pass2) {
                 ans2.innerHTML = "Passwords Matched ✅";
-                ans2.style.color = "green";
+                ans2.style.color = "#00cc66";
             } else {
                 ans2.innerHTML = "Passwords Do Not Match ❌";
-                ans2.style.color = "red";
+                ans2.style.color = "#ff4d4d";
             }
         }
 
@@ -219,9 +254,8 @@
                 dis.innerHTML = `Result: ${va1 % va2}`;
             }
 
-
-            document.getElementById('val1').value='';
-            document.getElementById('val2').value='';
+            document.getElementById('val1').value = '';
+            document.getElementById('val2').value = '';
 
             dis.style.opacity = "1";
             setTimeout(() => dis.style.opacity = "0.7", 300);
