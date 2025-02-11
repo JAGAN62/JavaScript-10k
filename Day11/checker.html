@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern UI Webpage</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #121212, #1e1e1e);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        button {
+            background: #00c9ff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #008aff;
+        }
+
+        #message, #message1 {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .btn-group button {
+            flex: 1;
+            margin: 5px;
+        }
+
+        #display {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00c9ff;
+            margin-top: 10px;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+  
+        @media screen and (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Password Checker -->
+        <form class="card">
+            <h2>Password Strength Checker</h2>
+            <input type="text" id="user1" required placeholder="User Name">
+            <input type="password" required id="pass1" placeholder="Password">
+            <div id="message"></div>
+            <button type="submit" onclick="check(event)">Check</button>
+        </form>
+
+        <!-- Password Matcher -->
+        <form class="card">
+            <h2>Password Matcher</h2>
+            <input type="text" id="user2" required placeholder="User Name">
+            <input type="password" id="pass2" required placeholder="New Password">
+            <input type="password" id="pass3" required placeholder="Confirm Password">
+            <div id="message1"></div>
+            <button type="submit" onclick="check2(event)">Match</button>
+        </form>
+
+        <!-- Simple Calculator -->
+        <div class="card">
+            <h2>Simple Calculator</h2>
+            <input type="number" id="val1" required placeholder="Number 1">
+            <input type="number" id="val2" required placeholder="Number 2">
+            <div id="display"></div>
+            <div class="btn-group">
+                <button type="button" onclick="ev(1)">+</button>
+                <button type="button" onclick="ev(2)">-</button>
+                <button type="button" onclick="ev(3)">*</button>
+                <button type="button" onclick="ev(4)">/</button>
+                <button type="button" onclick="ev(5)">%</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password Strength Checker
+
+           var username = document.getElementById('user1');
+            var passInput = document.getElementById('pass1');
+            function check(event) {
+            var passw = passInput.value;
+              event.preventDefault();
+             var ans = document.getElementById('message');
+     
+            if (passw == ""){
+                ans.innerHTML = "Please Enter Password!";
+                ans.style.color = "red";
+
+            }
+            else if(passw.length <= 5) {
+                ans.innerHTML = "Weak Password! ❌";
+                ans.style.color = "red";
+            } else if (passw.length >= 6 && passw.length <= 10) {
+                ans.innerHTML = "Medium Strength! ⚠️";
+                ans.style.color = "orange";
+            } else {
+                ans.innerHTML = "Strong Password! ✅";
+                ans.style.color = "green";
+            }
+
+            passInput.value = "";
+            username.value = "";
+        }
+
+        // Password Matcher
+        function check2(event) {
+            event.preventDefault();
+            var pass1 = document.getElementById('pass2').value;
+            var pass2 = document.getElementById('pass3').value;
+            var ans2 = document.getElementById('message1');
+
+            if (pass1 === pass2) {
+                ans2.innerHTML = "Passwords Matched ✅";
+                ans2.style.color = "green";
+            } else {
+                ans2.innerHTML = "Passwords Do Not Match ❌";
+                ans2.style.color = "red";
+            }
+        }
+
+        // Calculator Function
+        function ev(n) {
+            let dis = document.getElementById('display');
+            var va1 = Number(document.getElementById('val1').value);
+            var va2 = Number(document.getElementById('val2').value);
+
+            if (n == 1) {
+                dis.innerHTML = `Result: ${va1 + va2}`;
+            } else if (n == 2) {
+                dis.innerHTML = `Result: ${va1 - va2}`;
+            } else if (n == 3) {
+                dis.innerHTML = `Result: ${va1 * va2}`;
+            } else if (n == 4) {
+                dis.innerHTML = `Result: ${va1 / va2}`;
+            } else if (n == 5) {
+                dis.innerHTML = `Result: ${va1 % va2}`;
+            }
+
+
+            document.getElementById('val1').value='';
+            document.getElementById('val2').value='';
+
+            dis.style.opacity = "1";
+            setTimeout(() => dis.style.opacity = "0.7", 300);
+        }
+    </script>
+
+</body>
+</html>
