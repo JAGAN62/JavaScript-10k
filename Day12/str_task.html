@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #5695cc, #14d3dd);
+            text-align: center;
+            padding: 10px;
+        }
+        h1 {
+            color: #e0e4e5;
+        }
+        .container {
+            max-width: 330px;
+            margin: 20px auto;
+            background: #c6d5d5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(5, 232, 224, 0.2);
+            transition: transform 0.3s;
+        }
+        .container:hover {
+            transform: scale(1.04);
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #4facfe;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #4facfe;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background: hsl(193, 100%, 49%);
+            transform: scale(1.1);
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .sol{
+            color:rgb(29, 50, 245);
+            margin:10px;
+        }
+        h2{
+            color:rgb(3, 163, 163);
+        }
+        input::placeholder{
+            color:cyan;
+        }
+   
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+            input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>String Manipulation Tasks</h1>
+   <div class="container">
+<h2>Prefix Characters</h2>
+<input type="text" placeholder="Enter a string" required id="user4" onfocus="clearinput()">
+<button onclick="strval()">Prefix</button>
+<div id="str" class="sol"></div>
+</div>
+<!-- task 1 -->
+<div class="container">
+ <h2>String Conversions</h2>
+<input type="text" placeholder="Enter a string" required id="user1" onfocus="clearinput3()">
+<button onclick="convert()">click me!</button>
+<div id="up"  class="sol"></div>
+<div id="up"  class="sol"></div>
+<div id="lo"  class="sol"></div>
+<div id="rev" class="sol"></div>
+<div id="vow" class="sol"></div>
+</div>
+<!-- task2 -->
+ <div class="container">
+ <h2>Counting Words</h2>
+<input type="text" placeholder="Enter a sentence" required id="user2" onfocus="clearinput2()">
+<button onclick="count()">Count</button>
+<div id="counter" class="sol"></div>
+</div>
+
+ <!-- task3 -->
+  <div class="container">
+  <h2>Check Palindrome</h2>
+<input type="text" placeholder="Enter a string" required id="user3" onfocus="clearinput1()">
+<button onclick="palin()">palindrome</button>
+<div id="palind" class="sol"></div>
+</div>
+<script>
+
+    var upper=document.getElementById('up');
+    var lower=document.getElementById('lo');
+    var revers=document.getElementById('rev');
+    var vowelscount=document.getElementById('vow');
+    function convert(){
+        var user=document.getElementById('user1').value;
+
+        u=user.toUpperCase();
+        upper.innerHTML = `Upper : ${u}`;
+
+        l=user.toLowerCase();
+        lower.innerHTML = `Lower : ${l}`;
+
+        r=user.split('').reverse().join(" ");
+        revers.innerHTML = `Reverse : ${r}`;
+
+        var vowels= user.match(/[aeiou]/ig);
+        var vowelTotal = vowels ? vowels.length : 0;
+        vowelscount.innerHTML = `Number of vowels: ${vowelTotal} `;
+
+    }
+    function clearinput3(){
+        document.getElementById('user1').value='';
+            up.innerHTML='';
+            lo.innerHTML='';
+            rev.innerHTML='';
+            vow.innerHTML='';
+           
+        }
+
+    var ans=document.getElementById('counter');
+    function count(){
+        var user2=document.getElementById('user2').value.trim();
+        var ans_split = user2.split(' ')
+        ans.innerHTML = `Number of words : ${ans_split.length}`;
+        user2.value = "";
+    }
+    function clearinput2(){
+        document.getElementById('user2').value='';
+            ans.innerHTML='';
+           
+        }
+
+
+
+    // Palindrome
+    var palindrom=document.getElementById('palind');
+    function palin(){
+        var user3=document.getElementById('user3').value.trim();
+        var user4=user3.split('').reverse().join("");
+        let res="";
+
+        if (user3 === user4){
+            res+= `${user3} is a Palindrome`;
+        }else{
+           res+= `${user3} is not a Palindrome`;
+        }
+        palindrom.innerHTML=res;
+    }
+     function clearinput1(){
+        document.getElementById('user3').value='';
+            palindrom.innerHTML='';
+           
+        }
+
+
+    //Prefex chars 
+    let dis=document.getElementById('str');  
+    function strval(){
+        let str=document.getElementById('user4').value;
+        let res="Result : ";
+        for (let i=0;i<str.length;i++){
+            if(str.charAt(i) === "a" || str.charAt(i) === "A"){
+               res+= String.fromCharCode((str.charCodeAt(i)) + 25);
+            }
+            else{
+               res+=String.fromCharCode((str.charCodeAt(i)) - 1);
+            }
+        }
+        dis.innerHTML=res;
+    }
+    function clearinput(){
+            document.getElementById('user4').value='';
+            dis.innerHTML='';
+            
+        }
+      
+
+   
+        
+
+</script>
+</body>
+</html>
