@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff0000">
+    <title>Document</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h2 {
+            border-bottom: 2px solid white;
+            display: inline-block;
+            padding-bottom: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+        h2:hover {
+            transform: scale(1.1);
+        }
+        div {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            margin: 10px auto;
+            width: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        div:hover {
+            transform: translateY(-5px);
+        }
+        input, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin: 10px;
+            font-size: 16px;
+        }
+        input {
+            width: 80%;
+            color:red;
+            border-color: aqua;
+            border: 2px solid #f0351c;
+
+        }
+        button {
+            background: white;
+            color: #ff5e62;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #ff5e62;
+            color: white;
+        }
+        span{
+            color :hwb(348 2% 2%);
+        }
+        #ten{
+            display: none;
+        }
+        @media (max-width: 600px) {
+            div {
+                width: 95%;
+                font-size: 16px;
+            }
+            input {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- task 1 -->
+     <h2>Merging Arrays</h2>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+
+    <!-- task 2 -->
+     <h2>splice Method</h2>
+     <div id="four"></div>
+     <div id="five"></div>
+
+     <!-- task 3 -->
+     <h2>slice method</h2>
+     <div id="six"></div>
+     <div id="seven"></div>
+
+     <!-- task 4 -->
+     <h2>Join method</h2>
+     <div id="eight"></div>
+     <div id="nine"></div>
+
+     <!-- task 5 -->
+      <h2>Sort method</h2><br>
+      <input id="user" requeried placeholder="Enter No.s Seperated By comma" onfocus="clearinput()">
+      <button onclick="arange()" type="button">CLick me!</button>
+      <div id="ten"></div>
+
+
+      <script>
+        // first
+      var sports = ['Cricket','Tennis','Shuttle','Batminton','Basket ball'];
+      var hobbies = ['Coding','listening Music','playing chess','Meditation','learning New things'];
+      document.getElementById('one').innerHTML = "<span>Sports</span>  :  " +"[" + sports + "]";
+      document.getElementById('two').innerHTML = "<span>Hobbies</span> : " +  "[" + hobbies + ']';
+      document.getElementById('three').innerHTML="<span>MergeArray</span> : " + "[" + sports.concat(hobbies) + "]";
+    
+   
+    //   second
+    var nums = [1,2,3,4,5,6,7,8,9,10]; 
+    document.getElementById('four').innerHTML = "<span>Before</span> : " + "[" + nums +']';
+    nums.splice(3,3,40,50,60); 
+    document.getElementById('five').innerHTML="<span>After</span> : " + "[" +  nums +']';
+
+    // Third
+    var weeks = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    document.getElementById('six').innerHTML = '<span>daysOfWeek</span> : ' + '[' + weeks + ']' ;
+    document.getElementById('seven').innerHTML = '<span>WeekDays</span> : ' + '[' + weeks.slice(1,6) + ']';
+ 
+    // fourth
+    let strarr = ['I','Love','to','do','Coding'];
+    document.getElementById('eight').innerHTML = '<span>stringArray</span> : ' + '[' + strarr + ']'
+    document.getElementById('nine').innerHTML =  '<span>String</span> : ' + strarr.join(' ');
+
+    //fifth
+    function arange() {
+            var numbers = document.getElementById('user').value.split(',');
+            numbers.sort();
+            document.getElementById("ten").innerHTML = "<span>Sorted</span>: " + numbers.join(',');
+            document.getElementById("ten").style.display="block";
+        }
+        function clearinput(){
+            document.getElementById('user').value='';
+            document.getElementById("ten").innerText='';
+            document.getElementById("ten").style.display="none";
+
+        }
+      </script>
+
+</body>
+</html>
