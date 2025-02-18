@@ -4,9 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clock and Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* background: linear-gradient(45deg, #ff9a9e, #fad0c4); */
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            transition: 0.3s ease-in-out;
+        }
+
+        button{
+            position: relative;
+            width: 200px;
+            padding: 15px;
+            margin: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            overflow: hidden;
+            color: white;
+            outline: none;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            box-shadow: 0 5px 15px rgba(255, 117, 140, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
+    </style>
 </head>
+
 <body>
-    <button type="button"  onclick="window.open('DigitalClock.html')">Task 1</button><br>
-    <button type="button"  onclick="window.open('days.html')">Task 2</button><br>
+    <div class="container">
+        <h2 style="color: rgb(102, 67, 233);">Clock and Calculator</h2>
+        <button type="button" onclick="window.open('DigitalClock.html')">Task 1</button><br>
+        <button type="button" onclick="window.open('days.html')">Task 2</button>
+    </div>
 </body>
 </html>

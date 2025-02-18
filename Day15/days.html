@@ -138,14 +138,14 @@
             let diffInDays = Math.floor(diffInHrs / 24);
             let diffInWeeks = Math.floor(diffInDays / 7);
 
-            document.getElementById('years').innerHTML = `Years: ${(Math.floor(diffInYears)).toLocaleString('en-IN')}`;
-            document.getElementById('months').innerHTML = `Months: ${(diffInMonths).toLocaleString('en-IN')}`;
-            document.getElementById('weeks').innerHTML = `Weeks: ${(diffInWeeks).toLocaleString('en-IN')}`;
-            document.getElementById('days').innerHTML = `Days: ${(diffInDays).toLocaleString('en-IN')}`;
-            document.getElementById('hours').innerHTML = `Hours: ${(diffInHrs).toLocaleString('en-IN')}`;
-            document.getElementById('minutes').innerHTML = `Minutes: ${(diffInMin).toLocaleString('en-IN')}`;
-            document.getElementById('seconds').innerHTML = `Seconds: ${(diffInSec).toLocaleString('en-IN')}`;
-            document.getElementById('milliseconds').innerHTML = `Milliseconds: ${(diffInMs).toLocaleString('en-IN')}`;
+            document.getElementById('years').innerHTML = `   Years:    ${(Math.floor(diffInYears)).toLocaleString('en-IN')}`;
+            document.getElementById('months').innerHTML = `   Months:    ${(diffInMonths).toLocaleString('en-IN')}`;
+            document.getElementById('weeks').innerHTML = `    Weeks:    ${(diffInWeeks).toLocaleString('en-IN')}`;
+            document.getElementById('days').innerHTML = `Days:    ${(diffInDays).toLocaleString('en-IN')}`;
+            document.getElementById('hours').innerHTML = `Hours:    ${(diffInHrs).toLocaleString('en-IN')}`;
+            document.getElementById('minutes').innerHTML = `Minutes:    ${(diffInMin).toLocaleString('en-IN')}`;
+            document.getElementById('seconds').innerHTML = `Seconds:    ${(diffInSec).toLocaleString('en-IN')}`;
+            document.getElementById('milliseconds').innerHTML = `Milliseconds:    ${(diffInMs).toLocaleString('en-IN')}`;
             document.querySelectorAll('.result').forEach(div => div.classList.add('show'));
         }
 
@@ -153,6 +153,7 @@
             document.querySelectorAll('.result').forEach(div => {
                 div.innerHTML = "";
                 div.classList.remove('show');
+            document.querySelector('input').value = "";
             });
         }
     </script>
