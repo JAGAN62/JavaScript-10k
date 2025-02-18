@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days and Time Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4b6cb7, #688fdb);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            animation: bg 5s infinite alternate;
+        }
+
+        @keyframes bg {
+            0% { background: linear-gradient(135deg, #4b6cb7, #577bc4);}
+            100% { background: linear-gradient(135deg, #ff7eb3, #ff758c); }
+        }
+
+        /* Container */
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            max-width: 400px;
+            width: 90%;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: 0.3s ease-in-out;
+        }
+
+        input, button {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+        }
+
+        input:focus {
+            border-color: #ee8f9e;
+            box-shadow: 0 0 10px rgba(255, 117, 140, 0.8);
+        }
+
+        button {
+            background: linear-gradient(135deg, #ed8f9f, #f397bd);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 25px;
+            /* transition: 0.3s ease-in-out; */
+            animation: bg 5s infinite alternate;
+        }
+    
+        button:hover {
+            /* background: white; */
+            transform: scale(1.05);
+            color:black;
+        }
+
+        .result {
+            font-size: 18px;
+            margin: 8px 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            color: white;
+        }
+
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+            input, button {
+                font-size: 14px;
+            }
+            .result {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="color:white;">Days and Time Calculator</h2>
+        <input style="background: #fbf9f9;color:black;" type="date" required onfocus="clearInput()">
+        <button onclick="cal()">Click me!</button>
+        <div id="years" class="result"></div>
+        <div id="months" class="result"></div>
+        <div id="weeks" class="result"></div>
+        <div id="days" class="result"></div>
+        <div id="hours" class="result"></div>
+        <div id="minutes" class="result"></div>
+        <div id="seconds" class="result"></div>
+        <div id="milliseconds" class="result"></div>
+    </div>
+
+    <script>
+        function cal() {
+            let inp = document.querySelector('input').value;
+            if (!inp) {
+                alert("Please select a Date");
+                return;
+            }
+
+            let now = new Date();
+            let old = new Date(inp);
+
+            let diffInMs = now - old; 
+            let diffInMonths = (now.getFullYear() - old.getFullYear()) * 12 + (now.getMonth() - old.getMonth());
+            let diffInYears = diffInMonths / 12;
+            let diffInSec = Math.floor(diffInMs / 1000);
+            let diffInMin = Math.floor(diffInSec / 60);
+            let diffInHrs = Math.floor(diffInMin / 60);
+            let diffInDays = Math.floor(diffInHrs / 24);
+            let diffInWeeks = Math.floor(diffInDays / 7);
+
+            document.getElementById('years').innerHTML = `Years: ${(Math.floor(diffInYears)).toLocaleString('en-IN')}`;
+            document.getElementById('months').innerHTML = `Months: ${(diffInMonths).toLocaleString('en-IN')}`;
+            document.getElementById('weeks').innerHTML = `Weeks: ${(diffInWeeks).toLocaleString('en-IN')}`;
+            document.getElementById('days').innerHTML = `Days: ${(diffInDays).toLocaleString('en-IN')}`;
+            document.getElementById('hours').innerHTML = `Hours: ${(diffInHrs).toLocaleString('en-IN')}`;
+            document.getElementById('minutes').innerHTML = `Minutes: ${(diffInMin).toLocaleString('en-IN')}`;
+            document.getElementById('seconds').innerHTML = `Seconds: ${(diffInSec).toLocaleString('en-IN')}`;
+            document.getElementById('milliseconds').innerHTML = `Milliseconds: ${(diffInMs).toLocaleString('en-IN')}`;
+            document.querySelectorAll('.result').forEach(div => div.classList.add('show'));
+        }
+
+        function clearInput() {
+            document.querySelectorAll('.result').forEach(div => {
+                div.innerHTML = "";
+                div.classList.remove('show');
+            });
+        }
+    </script>
+</body>
+</html>
