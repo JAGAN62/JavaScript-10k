@@ -3,21 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cards</title>
+    <style>
+      body{
+        margin-top:10px;
+        padding:0;
+        box-sizing: content-box;
+        overflow-x:hidden;
+        background:linear-gradient(rgba(244, 115, 115, 0.77),rgba(206, 206, 12, 0.666));
+      }
+      h2{
+        text-align: center;
+        color:white;
+      }
+      .main{
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap:10px 10px;
+        justify-content: center;
+        align-content: center;
+
+      }
+      .card{
+        width:23vw;
+        background-color: aliceblue;
+        border:2px solid rgb(108, 234, 234);
+      }
+      #imgstyles{
+        width:250px;
+        height:250px;
+        text-align: center;
+        margin:30px;
+      }
+      .para{
+        overflow-x: hidden;
+        margin-left: 30px;
+        
+      }
+      @media (max-width: 768px) {
+       .main {
+          grid-template-columns: auto;
+         }
+       .card {
+         width: 60vw; 
+        }
+      #imgstyles {
+        width: 200px;
+        height: 200px;
+        margin-left: 30px;
+        }
+       .para{
+         margin-left: 30px;
+        }
+}
+ 
+    </style>
 </head>
 <body>
-    <h2>length : </h2> <div id="len"></div>
-
-
-    <h2>categories : </h2>
-  <h2>1 . Mens : </h2>  <div id="m"></div>
-  <h2>2 . Womens : </h2> <div id="w"></div>
-  <h2>3 . Electronics : </h2>  <div id="e"></div>
-  <h2>4 . Jewelery : </h2>  <div id="j"></div>
-  <script>
+  <h2>Fake Store</h2>
+    <script>
 
     const data= [
-  {
+        {
     "id": 1,
     "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
     "price": 109.95,
@@ -175,7 +222,7 @@
   },
   {
     "id": 14,
-    "title": "Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ",
+    "title": "Samsung 49-Inch CHG90 – Super Ultrawide Screen QLED ",
     "price": 999.99,
     "description": "49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag",
     "category": "electronics",
@@ -259,39 +306,50 @@
   }
 ]
 
-let count=0;
+let pictures =["/imgs/m1.jpeg","/imgs/m2.jpg","/imgs/m3.jpg","/imgs/m4.jpeg","/imgs/jw1.jpg","/imgs/jw2.jpg","/imgs/jw3.jpeg","/imgs/jw4.webp","/imgs/e1.jpg","/imgs/e2.jpeg","/imgs/e3.jpg","/imgs/e4.jpg","/imgs/e1.jpg","/imgs/e4.jpg","/imgs/w1.jpeg","/imgs/w2.jpeg","/imgs/w3.jpeg","/imgs/w4.jpeg","/imgs/w1.jpeg","/imgs/w3.jpeg"]
 
-for (i=0;data[i] !== undefined;i++){
-       count++;
-}
-
-document.getElementById('len').innerHTML = count;
-
-
-women = [];
-men = [];
-jewellery = [];
-electronics = [];
-
+let container = document.createElement('div');
 for(i in data){
-   if(data[i].category == "women's clothing"){
-     women.push(data[i]['category']);
-   }
-   else if(data[i]['category'] == "electronics"){
-    electronics.push(data[i]['category']);
+   
+   //create and insert elements 
+    let cards = document.createElement('div');
 
-   }else if (data[i]['category'] == "jewelery"){
-       jewellery.push(data[i]['category']);
+    let images = document.createElement('img');
+    images.setAttribute('src',pictures[i]);
 
-   }else if(data[i]['category'] == "men's clothing"){
-    men.push(data[i]['category']);
+    let p1 = document.createElement('p');
+    p1.innerHTML = "Id : " + data[i]['id'];
 
-   }
+    let p2 = document.createElement('p');
+    p2.innerHTML = "Title : " + data[i]['title'];
+
+    let p3 = document.createElement('p');
+    p3.innerHTML = "Category : " + data[i]['category'];
+
+    let p4 = document.createElement('p');
+    p4.innerHTML = "Price : " + "$" + data[i]['price'];
+
+    let p5 = document.createElement('p');
+    p5.innerHTML = "Ratings : " + data[i]['rating']['rate'];
+
+
+  // append childs to div
+    cards.append(images,p1,p2,p3,p4,p5);
+    container.append(cards);
+
+  // styling elements
+  container.setAttribute('class','main');
+  cards.setAttribute('class','card'); 
+  images.setAttribute('id','imgstyles');
+  [p1, p2, p3, p4, p5].forEach(p => p.setAttribute('class', 'para'));
+
+
+
+
 }
-document.getElementById('w').innerHTML = women;
-document.getElementById('m').innerHTML = men;
-document.getElementById('j').innerHTML = jewellery;
-document.getElementById('e').innerHTML = electronics;
-  </script>
+
+document.body.append(container)
+
+    </script>
 </body>
 </html>
