@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let container = document.createElement('div');
+    let  arr = [];
+    async function abc(){
+       let data1 = await fetch('https://fakestoreapi.com/products');
+       let data = await data1.json();
+       console.log(data)
+       let maindata = data.map((val)=>{
+       let but1 = document.createElement('button');
+       but1.innerHTML = 'add to cart';
+       var but2 = document.createElement('button');
+       but2.innerHTML = 'buy product';
+       let p1 = document.createElement('p');
+       p1.innerHTML = "Id : " + val['id'];
+       let p2 = document.createElement('p');
+       p2.innerHTML = "Title : " + val['title'];
+
+       container.append(but1)
+       but1.addEventListener('click',()=>{
+          arr.push(val);
+       }
+       )
+ 
+            localStorage.setItem('nothig',JSON.stringify(arr));
+        
+       })
+
+ }
+  
+abc()
+document.body.append(container)
+</script>
+</body>
+</html>
