@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Tree{
+            constructor(size,color,fruits){
+                this.size=size;
+                this.color=color;
+                this.fruits=fruits;
+            }
+            // fruit(){
+            //    console.log('fruits',this.fruits);
+            // }
+            // water(){
+            //     console.log('color of leaves',this.color);
+            // }
+            // sizes(){
+            //     console.log('size is',this.size);
+
+            // }
+        }
+
+        class Plant extends Tree{
+           medicine;
+           roots;
+           constructor (medicine,roots,size,color,fruits){
+            super(size,color,fruits);
+            this.medicine=medicine;
+            this.roots=roots;
+           }
+
+        }
+
+
+
+        let o1 = new Tree('20m','green','absent')
+        let o2 = new Plant('cancer','ground','20cm','orange','more')
+        // o1.fruit();
+        // o2.water();
+        console.log(o2)
+    </script>
+</body>
+</html>
